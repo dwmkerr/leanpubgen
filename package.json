@@ -1,0 +1,23 @@
+{
+  "name": "leanpub",
+  "version": "0.1.0",
+  "description": "## TODO",
+  "main": "leanpub.js",
+  "dependencies": {
+    "glob": "^10.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.6.1"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
+  "author": "Dave Kerr <github.com/dwmkerr>",
+  "license": "MIT"
+}

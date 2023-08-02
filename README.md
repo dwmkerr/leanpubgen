@@ -1,10 +1,53 @@
 # leanpub
 
+## 0.1
+
+- [x] Cover image
+- Introduction text
+- In-book links
+- Page breaks
+- Z-Shell blurb
+- Sample (one per part?)
+- If the sample/frontmatter/mainmatter/part shit works, add to the raw manu
+
+## 0.2
+
+- missing chapter (plus its images)
+- better images report/test
+
 ## Features
 
 - TO TEST: Mapping of internal links to other markdown files as per: https://leanpub.com/markua/read#crosslinks
 - TODO: support for boxes
-- TODO: index support
+- [Docusaurus Admonitions](https://docusaurus.io/docs/markdown-features/admonitions) are converted into [Markua Blurbs](https://leanpub.com/markua/read#leanpub-auto-blurbs-b-or-blurb)
+- TODO: boxes into [Markua Asides](https://leanpub.com/markua/read#leanpub-auto-asides-a-or-aside)
+- TODO: index support Support for [Markua Index Entries](http://help.leanpub.com/en/articles/6961502-how-to-create-an-index-in-a-leanpub-book)
+- TODO: headings are not indented properly for markua
+- TODO: page breaks at the end of chapters
+- TODO: front,main,back matter https://leanpub.com/lfm/read#leanpub-auto-front-matter-main-matter-and-back-matter
+- TODO: [part headings](https://leanpub.com/markua/read#headings) note that part headings are changing
+
+**Including Markua Content**
+
+If you want to include specific Markua content, you can use the special `<!-- markua: -->` comment. For example, to include a part of the book in the sample and set a heading as a 'part' heading, you could use the following MDX:
+
+```mdx
+<!-- markua: {sample: true} -->
+<!-- markua: {class: part} -->
+# Part
+
+This is in the sample.
+```
+
+This will be transformed into the following Markua:
+
+```mdx
+{sample: true}
+{class: part}
+# Part
+
+This is in the sample.
+```
 
 ## Parameters
 
@@ -12,12 +55,9 @@
 here, and this is also used to ensure that links between files are correctly
 mapped into the flat folder structure.
 
-## TODO
-
-- Links in books
-
 ## TODO NTH
 
+- Support warning/error/info output.
 - create output directory
 
 todo check for image path clashes or put in subfolders
@@ -34,33 +74,6 @@ Asides can be written this way, since adding a bunch of A> stuff at the beginnin
 {/aside}
 
 B> Blurbs are useful
-
-{blurb}
-Blurbs are useful
-{/blurb}
-
-There are many types of blurbs, which will be familiar to you if you've ever read a computer programming book.
-
-D> This is a discussion.
-
-You can also specify them this way:
-
-{blurb, class: discussion}
-This is a discussion
-{/blurb}
-
-E> This is an error.
-
-I> This is information.
-
-Q> This is a question. (Not a question in a Markua course; those are done differently!)
-
-T> This is a tip.
-
-W> This is a warning.
-
-X> This is an exercise. (Not an exercise in a Markua course; those are done differently!)
-
 
 
 ```

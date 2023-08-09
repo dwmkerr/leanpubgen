@@ -23,6 +23,10 @@ export interface ProcessParameters {
   sliceEnd: number | undefined;
 }
 
+export interface GenerateResults {
+  files: ProcessedMarkdownFile[]
+}
+
 async function processFile(
   file: ProcessFile,
   parameters: ProcessParameters,
@@ -46,7 +50,7 @@ async function processFile(
   return processedMarkdownFile;
 }
 
-export async function generate(parameters: ProcessParameters) {
+export async function generate(parameters: ProcessParameters): Promise<GenerateResults> {
   const { basePath, sourceFilesPattern, outputPath, sliceStart, sliceEnd } =
     parameters;
   //  Get the source files, sort them (makes testing easier, more deterministic)
@@ -86,16 +90,18 @@ export async function generate(parameters: ProcessParameters) {
           imageFileNames.push(
             // urr...
             ...[...stdout.matchAll(/^\s*(.+?) ->/gm)].map((match) =>
-              path.basename(match[1])
-            )
+              path.basename(match[1]),
+            ),
           );
-        } catch (err: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+        } catch (err: any) {
           console.error(`exec error: ${err}`);
           const { /* stdout, */ stderr } = err;
           console.error(stderr);
         }
       } else {
-        console.log(`warning: images folder '${sourceImagesPath}' not found...`);
+        console.log(
+          `warning: images folder '${sourceImagesPath}' not found...`,
+        );
       }
 
       return {

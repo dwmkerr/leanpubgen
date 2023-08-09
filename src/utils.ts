@@ -51,7 +51,7 @@ export function processCrosslinksToAnchors(text: string) {
 
 export function processCrosslinksToRelativeFiles(
   text: string,
-  filePath: string
+  filePath: string,
 ) {
   //  Find crosslinks.
   //  For reference: const allLinks = /\[([^\]]+)\]\(([^\)]+)\)/g;

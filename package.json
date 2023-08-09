@@ -2,7 +2,7 @@
   "name": "leanpub",
   "version": "0.1.0",
   "description": "## TODO",
-  "main": "leanpub.js",
+  "main": "src/leanpub.ts",
   "dependencies": {
     "glob": "^10.3.3",
     "yaml": "^2.3.1"
@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "tsc",
-    "start": "ts-node ./src/index.ts",
+    "start": "ts-node ./src/leanpub.ts",
     "test": "jest",
     "test:debug": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "generate": "node leanpub.js",

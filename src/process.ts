@@ -145,15 +145,19 @@ export function processMarkdownFile(
   //  Process all of the text.
   const processedMarkdown = processMarkdown(markdown, sourceFileDirectory);
 
+  //  Format a leanpub header and title if needed.
+  const header = processedMarkdown.frontmatter?.leanpub_header || "";
+  const id = `{id: ${fileId}}`;
+  const title = processedMarkdown.frontmatter?.leanpub_title ||
+    processedMarkdown.frontmatter?.title ||
+    "";
+
+
   //  Add markua heading, a markua fileid and a title (from the frontmatter).
   const text = [
-    processedMarkdown.frontmatter.leanpub_header || "",
-    `{id: ${fileId}}`,
-    `# ${
-      processedMarkdown.frontmatter.leanpub_title ||
-      processedMarkdown.frontmatter.title
-    }`,
-    "",
+    header,
+    id,
+    title ? `# ${title}${os.EOL}` : "",
     processedMarkdown.markua,
     "{pagebreak}",
   ]
